@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBiRazorApp", "PowerBiRazorApp\PowerBiRazorApp.csproj", "{E4F6E9C5-90C6-43F8-A5F0-6E22F18B365F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4F6E9C5-90C6-43F8-A5F0-6E22F18B365F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F6E9C5-90C6-43F8-A5F0-6E22F18B365F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4F6E9C5-90C6-43F8-A5F0-6E22F18B365F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4F6E9C5-90C6-43F8-A5F0-6E22F18B365F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0661CEB9-0C1A-4FD9-A28B-9D4109CB2613}
+	EndGlobalSection
+EndGlobal
