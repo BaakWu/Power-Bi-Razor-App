@@ -1,0 +1,6 @@
+﻿.embedded-report {
+    margin: 0 1vw 0 1vw;
+    padding-top: 20px;
+    z-index: 1;
+    height: calc(100vh - 70px);
+}

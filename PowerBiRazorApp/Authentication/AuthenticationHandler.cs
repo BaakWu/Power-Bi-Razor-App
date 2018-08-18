@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Microsoft.Rest;
 using Newtonsoft.Json;
 using System.Configuration;
@@ -10,23 +11,21 @@ namespace PowerBiRazorApp.Authentication.AuthenticationHandler
 {
     public class AuthenticationHandler
     {
-        private static readonly string Username = ConfigurationManager.AppSettings["pbiUsername"];
-        private static readonly string Password = ConfigurationManager.AppSettings["pbiPassword"];
-        private static readonly string AuthorityUrl = ConfigurationManager.AppSettings["authorityUrl"];
-        private static readonly string ResourceUrl = ConfigurationManager.AppSettings["resourceUrl"];
-        private static readonly string ApplicationId = ConfigurationManager.AppSettings["ApplicationId"];
-        private static readonly string ApiUrl = ConfigurationManager.AppSettings["apiUrl"];
-        private static readonly string WorkspaceId = ConfigurationManager.AppSettings["workspaceId"];
-        private static readonly string ReportId = ConfigurationManager.AppSettings["reportId"];
-        private static readonly string AzureTenantID = ConfigurationManager.AppSettings["tenantId"];
-        private static readonly string AzureInstance = ConfigurationManager.AppSettings["instanceURL"];
-        private static readonly string AzureTokenType = ConfigurationManager.AppSettings["tokenType"];
+
+        private readonly AzureAdSettings _azureSettings;
+        private readonly PowerBiSettings _powerBiSettings;
+
+        public AuthenticationHandler(IOptions<AzureAdSettings> azureOptions, IOptions<PowerBiSettings> powerBiOptions)
+        {
+            _azureSettings = azureOptions.Value;
+            _powerBiSettings = powerBiOptions.Value;
+        }
 
         /// <returns></returns>
         public async Task<(TokenCredentials tokenCredentials, string accessToken)> GetAzureTokenDataAsync()
         {
 
-             var authorityUrl = $"{AzureInstance}{AzureTenantID}/oauth2/token";
+             var authorityUrl = $"{_azureSettings.Instance}{_azureSettings.TenantId}/oauth2/token";
 
              var oauthEndpoint = new Uri(authorityUrl);
 
@@ -34,11 +33,11 @@ namespace PowerBiRazorApp.Authentication.AuthenticationHandler
              {
                  var result = await client.PostAsync(oauthEndpoint, new FormUrlEncodedContent(new[]
                  {
-                     new KeyValuePair<string, string>("resource", ResourceUrl),
-                     new KeyValuePair<string, string>("client_id", ApplicationId),
+                     new KeyValuePair<string, string>("resource", _powerBiSettings.ResourceAddress),
+                     new KeyValuePair<string, string>("client_id", _azureSettings.ClientId),
                      new KeyValuePair<string, string>("grant_type", "password"),
-                     new KeyValuePair<string, string>("username", Username),
-                     new KeyValuePair<string, string>("password", Password),
+                     new KeyValuePair<string, string>("username", _powerBiSettings.MasterUser),
+                     new KeyValuePair<string, string>("password", _powerBiSettings.MasterKey),
                      new KeyValuePair<string, string>("scope", "openid"),
                  }));
 

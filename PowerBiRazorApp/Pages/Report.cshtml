@@ -1,0 +1,19 @@
+﻿@page
+@model PowerBiRazorApp.Pages.ReportModel
+@{
+    ViewData["Title"] = "Report";
+}
+
+<h2>Report</h2>
+<div id="desktopReport" class="embedded-report"> </div>
+<script type="text/javascript">
+    embedReport("282ecd0b-189f-4d97-9b40-caee2e134062")
+</script>
+
+
+
+@section Scripts{
+    <script src="~/lib/powerbi/powerbi.min.js"></script>
+    <script src="~/custom/embedReport.js"></script>
+}
+
