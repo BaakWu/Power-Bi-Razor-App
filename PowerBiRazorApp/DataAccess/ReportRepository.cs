@@ -1,13 +1,17 @@
-﻿using Microsoft.PowerBI.Api.V2;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.PowerBI.Api.V2;
+using Microsoft.PowerBI.Api.V2.Models;
 using System.Threading.Tasks;
 using PowerBiRazorApp.Authentication.AuthenticationHandler;
+using PowerBiRazorApp.Models;
 
 namespace PowerBiRazorApp.DataAccess
 {
+    /// <summary>
+    /// Class responsible for retrieving Power BI report details from the Power BI API
+    /// </summary>
     public class ReportRepository
     {
         private readonly PowerBiSettings _powerBiSettings;
@@ -20,7 +24,11 @@ namespace PowerBiRazorApp.DataAccess
             _powerBiSettings = powerBiOptions.Value;
         }
 
-        public async Task<IList<Microsoft.PowerBI.Api.V2.Models.Report>> GetAvailableReportsAsync()
+        /// <summary>
+        /// Retrieves a list of reports from Power BI api
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IList<Report>> GetAvailableReportsAsync()
         {
             // Create a user password cradentials.
             var credential = await _authenticationHandler.GetAzureTokenDataAsync();
@@ -29,6 +37,34 @@ namespace PowerBiRazorApp.DataAccess
             {
                 var reports = await client.Reports.GetReportsInGroupAsync(_powerBiSettings.GroupId);
                 return reports.Value;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the report details for the passed in report reportId
+        /// </summary>
+        /// <param name="reportId"></param>
+        /// <param name="azureUser"></param>
+        /// <returns></returns>
+        public async Task<ReportEmbedConfig> GetReportForIdAsync(Guid reportId)
+        {
+            var azureTokenData = await _authenticationHandler.GetAzureTokenDataAsync();
+            
+            using (var powerBiClient = new PowerBIClient(new Uri(_powerBiSettings.MainAddress), azureTokenData.tokenCredentials))
+            {
+                var powerBiReport = await powerBiClient.Reports.GetReportAsync(_powerBiSettings.GroupId, reportId.ToString());
+            
+                var powerBiTokenRequestParameters = new GenerateTokenRequest(accessLevel: "view");
+            
+                var powerBiTokenResponse = await powerBiClient.Reports.GenerateTokenInGroupAsync(_powerBiSettings.GroupId, powerBiReport.Id, powerBiTokenRequestParameters);
+            
+                return new ReportEmbedConfig
+                {
+                    ReportID = Guid.Parse(powerBiReport.Id),
+                    Name = powerBiReport.Name,
+                    EmbedUrl = powerBiReport.EmbedUrl,
+                    AccessToken = powerBiTokenResponse.Token
+                };
             }
         }
 
