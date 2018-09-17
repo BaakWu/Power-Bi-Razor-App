@@ -38,7 +38,7 @@ This is the workflow of responsibility on how a Report ID sent by the client tur
 ``` js-sequence
 participant iFrame
 Client -> Report Server: Sends Report ID
-Report Server -> PowerBi Server: Sends Report ID \n and Master Power BI \n Credentials
+Report Server -> Power Bi Server: Sends Report ID \n and Master Power BI \n Credentials
 Power Bi Server -> Report Server: Sends report embed token
 Report Server -> Client: Sends report config \n (with embed token)
 Client -> iFrame :Embeds Power BI \n Report with config
