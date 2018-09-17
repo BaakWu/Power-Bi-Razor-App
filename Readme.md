@@ -94,7 +94,7 @@ Be sure that the MasterUser that you used above is an owner of that group/worksp
 
 After finishing Step 2. You should be able to launch the application through IIS Express in Visual Studio
 
-### 4.Setting up Dedicated Capacity (Optional for Development, Required for Production)
+### 4. Setting up Dedicated Capacity (Optional for Development, Required for Production)
 
 The Power BI application will work without paying or providing dedicated capacity, however note that you are using the development capacity of Power BI embedded from Microsoft is not guaranteed for timely performance, and against the license agreement when used in production. 
 
