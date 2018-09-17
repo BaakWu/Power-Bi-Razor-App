@@ -37,16 +37,16 @@ This is the workflow of responsibility on how a Report ID sent by the client tur
 
 ``` js-sequence
 participant iFrame
-Client -> Reportal Server: Sends Report ID
-Reportal Server -> PowerBi Server: Sends Report ID \n and Master Power BI \n Credentials
-Power Bi Server -> Reportal Server: Sends report embed token
-Reportal Server -> Client: Sends report config \n (with embed token)
+Client -> Report Server: Sends Report ID
+Report Server -> PowerBi Server: Sends Report ID \n and Master Power BI \n Credentials
+Power Bi Server -> Report Server: Sends report embed token
+Report Server -> Client: Sends report config \n (with embed token)
 Client -> iFrame :Embeds Power BI \n Report with config
 ```
 
-![FlowChart](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/ReportalFlowChart.png)
+![FlowChart](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/ReportFlowChart.png)
 	
-_It's important to note that any interaction between the iFrame and the Client such as any interactive sorting functions or filtering functions of the report has nothing to do with the Reportal server. That is between Microsoft's Power BI service and The Client_
+_It's important to note that any interaction between the iFrame and the Client such as any interactive sorting functions or filtering functions of the report has nothing to do with the Report server. That is between Microsoft's Power BI service and The Client_
 
 ## How To Setup this App
 
