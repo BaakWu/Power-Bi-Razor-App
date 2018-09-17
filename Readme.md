@@ -6,8 +6,8 @@ This application is part of a step by step guide of how to implement a Power Bi 
 
 This Web app creates a index page listing links of Power BI reports based on your Power BI workspace. Clicking on the link will lead you to a page where the report is being embedded.
 
-![Example1](ReadmeImages\Example1.png)
-![Example2](ReadmeImages\Example2.png)
+![Example1](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/Example1.png)
+![Example2](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/Example2.png)
 
 ## Features in Progress by Priority 
 
@@ -44,7 +44,7 @@ Reportal Server -> Client: Sends report config \n (with embed token)
 Client -> iFrame :Embeds Power BI \n Report with config
 ```
 
-![FlowChart](ReadmeImages\ReportalFlowChart.png)
+![FlowChart](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/ReportalFlowChart.png)
 	
 _It's important to note that any interaction between the iFrame and the Client such as any interactive sorting functions or filtering functions of the report has nothing to do with the Reportal server. That is between Microsoft's Power BI service and The Client_
 
@@ -62,35 +62,35 @@ Go to https://dev.powerbi.com/apps and register a Power Bi Application to Azure 
 
 Access the appsettings.json file and fill in the following information
 
-![AppSettings](ReadmeImages\AppSettingsRequirements.png)
+![AppSettings](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AppSettingsRequirements.png)
 
 To get the" TenantId", go to the azure portal for you or your organization (https://portal.azure.com) and find it under "Azure Active Directory" => "Properties" =>"Directory ID" the guid under there should be the "TenantId" 
 
-![AzureTenantID](ReadmeImages\AzureTenantID.png)
+![AzureTenantID](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureTenantID.png)
 
 The "ClientId" should have been provided to you under the Power BI App registration tool in Step 1.
  
-![AzureClientID](ReadmeImages\AzureClientID.png)
+![AzureClientID](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureClientID.png)
 
 If you want to find it under the Azure portal, navigate to "Azure Active Directory" => "App Registrations" => "(NAME OF YOUR APP)" => "Application ID"
 
-![AzureClientID3](ReadmeImages\AzureClientID3.png)
-![AzureClientID2](ReadmeImages\AzureClientID2.png)
+![AzureClientID3](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureClientID3.png)
+![AzureClientID2](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureClientID2.png)
 
 The "MasterUser" should be any Microsoft account you have that has a Power Bi Pro license. Enter your username and password inside the "MasterUser," and "MasterKey." **Be sure to NEVER commit this information to a public repository.**
 
 The "GroupId" is the "workspace" where your Power BI reports you wish to embed reside. They can be found going to https://app.powerbi.com/ => "(YOUR WORKSPACE NAME)" and should be Guid after the route "Group" in the URL.
 
-![PowerBiGroupID](ReadmeImages\PowerBIGroup.png)
+![PowerBiGroupID](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/PowerBIGroup.png)
 
 Be sure that the MasterUser that you used above is an owner of that group/workspace, otherwise the MasterUser will not have permissions to embed the reports.
 
-![Member](ReadmeImages\member.png)
-![Owner](ReadmeImages\PowerBIOwner.png)
+![Member](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/member.png)
+![Owner](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/PowerBIOwner.png)
 
 ### 3. Build and launch the Application through IIS Express
 
-![Launch](ReadmeImages\LaunchApp.png)
+![Launch](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/LaunchApp.png)
 
 After finishing Step 2. You should be able to launch the application through IIS Express in Visual Studio
 
@@ -102,20 +102,20 @@ To enable dedicated capacity, purchase a Power BI resource from the Azure Portal
 
 Create a resource and search for "Power Bi Embedded"
 
-![Marketpalce](ReadmeImages\AzureMarketPlace.png)
-![Marketpalce2](ReadmeImages\AzureMarketPlace2.png)
+![Marketpalce](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureMarketPlace.png)
+![Marketpalce2](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/AzureMarketPlace2.png)
 
 Purchase your resource with the appropriate subscription and pricing tier for your situation.
-![ResourcePurchase](ReadmeImages\ResourcePurchase.png)
+![ResourcePurchase](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/ResourcePurchase.png)
 
 
 Go to https://app.powerbi.com/ and edit your Power BI workspace under "Edit workspace"
 Go under "Advanced" and enable "Dedicated capacity" (May take a while) and choose the resource you purchased above.
 
-![WorkspaceOptions](ReadmeImages\WorkspaceOptions.png)
-![Embedded Capacity](ReadmeImages\EnableEmbeddedCapacity.png)
+![WorkspaceOptions](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/WorkspaceOptions.png)
+![Embedded Capacity](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/EnableEmbeddedCapacity.png)
 
 
 After saving, you should see a diamond on your workspace, the reports from that workspace should now use purchased "dedicated capacity" rather than "development capacity."
 
-![Diamond](ReadmeImages\EmbeddedDiamond.png)
+![Diamond](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/EmbeddedDiamond.png)
