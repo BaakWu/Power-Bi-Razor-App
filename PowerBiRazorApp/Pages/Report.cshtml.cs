@@ -19,9 +19,12 @@ namespace PowerBiRazorApp.Pages
         }
 
         /// <returns></returns>
-        public async Task OnGetAsync(Guid reportID)
+        public async Task OnGetAsync(Guid reportID, string name, string role)
         {
-            ReportDetail = await _reportRepo.GetReportForIdAsync(reportID);
+            if(name == null && role == null)
+                ReportDetail = await _reportRepo.GetReportForIdAsync(reportID);
+            else
+                ReportDetail = await _reportRepo.GetReportForIdAsync(reportID, name, role);
         }
     }
 }
