@@ -27,6 +27,10 @@ namespace PowerBiRazorApp.Pages
             ReportID = reportID;
         }
 
+        /// <summary>
+        /// Sets the row level security permissions towards the report
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnPostSetReportRLS()
         {
             return RedirectToPage("Report", new { reportID = ReportID, name = Name, role = Role });

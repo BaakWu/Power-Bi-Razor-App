@@ -10,11 +10,9 @@ This Web app creates a index page listing links of Power BI reports based on you
 ![Example2](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/Example2.png)
 
 ## Features in Progress by Priority 
-
- 1. Row level Security (highest priority)
- 2. Mobile view
- 3. QNA
- 4. Dashboards
+ 1. Mobile view
+ 2. QNA
+ 3. Dashboards
 
 ## Requirements
  - Power Bi Pro Account
@@ -119,3 +117,25 @@ Go under "Advanced" and enable "Dedicated capacity" (May take a while) and choos
 After saving, you should see a diamond on your workspace, the reports from that workspace should now use purchased "dedicated capacity" rather than "development capacity."
 
 ![Diamond](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/EmbeddedDiamond.png)
+
+### 5. How to use Row Level Security (RLS)
+
+Row level security is a feature of Power BI that allows different users based on security roles and their identifiers (guids, usernames, ID's ect) to be restricted on the information that they can view for the same report. For example a supervisor may see data on their employees, but employees should only see data on themselves. 
+
+Report without Row Level Security (RLS)
+
+Report With Row Level Security as "Fred"
+
+To do this, you must go to power BI and under "Modeling"=>"Manage Roles"
+
+In here you can create role(s)
+
+Based on that you fill in a Power BI DAX expression where it is evaluated per row of a selected table. in the case of Power BI embedded, you should use 'USERNAME()' as one of the fields, as that be the name identifier someone uses on the website.
+
+Once the report is published to Power BI with the row level security configured, you should open the report in the project and fill in the requesite role and name that you want to specify. 
+
+(NOTE: Power BI embedded supports multiple roles, however this demo only supports 1 role)
+
+In this case a person with the "Role" of "User" and the Name of "Al" should only show results where [Name] = "Al" is true in the DAX expression.
+
+

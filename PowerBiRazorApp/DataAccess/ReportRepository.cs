@@ -69,7 +69,7 @@ namespace PowerBiRazorApp.DataAccess
         }
 
         /// <summary>
-        /// Retrieves the report details for the passed in report reportId
+        /// Retrieves the report details for the passed in report reportId with a row level security name and role attached to it
         /// </summary>
         /// <param name="reportId"></param>
         /// <param name="azureUser"></param>
