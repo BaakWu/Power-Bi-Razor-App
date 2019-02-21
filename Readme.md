@@ -124,18 +124,28 @@ Row level security is a feature of Power BI that allows different users based on
 
 Report without Row Level Security (RLS)
 
+![No Row Level Security](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/NoRowLevelSecurity.png)
+
 Report With Row Level Security as "Fred"
+
+![With Row Level Security](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/WithRowLevelSecurity.png)
 
 To do this, you must go to power BI and under "Modeling"=>"Manage Roles"
 
+![Setting RLS](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/SettingRowLevelSecurity.png)
+
 In here you can create role(s)
+
+![Configuring RLS](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/ConfiguringRLS.png)
 
 Based on that you fill in a Power BI DAX expression where it is evaluated per row of a selected table. in the case of Power BI embedded, you should use 'USERNAME()' as one of the fields, as that be the name identifier someone uses on the website.
 
-Once the report is published to Power BI with the row level security configured, you should open the report in the project and fill in the requesite role and name that you want to specify. 
+Once the report is published to Power BI with the row level security configured you should open the report in the project and fill in the requesite role and name that you want to specify. 
+
+![Using RLS](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/UsingRLS.png)
 
 (NOTE: Power BI embedded supports multiple roles, however this demo only supports 1 role)
 
 In this case a person with the "Role" of "User" and the Name of "Al" should only show results where [Name] = "Al" is true in the DAX expression.
 
-
+![With Row Level Security](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/WithRowLevelSecurity.png)
