@@ -146,6 +146,6 @@ Once the report is published to Power BI with the row level security configured 
 
 (NOTE: Power BI embedded supports multiple roles, however this demo only supports 1 role)
 
-In this case a person with the "Role" of "User" and the Name of "Al" should only show results where [Name] = "Al" is true in the DAX expression.
+In this case a person with the "Role" of "User" and the Name of "Fred" should only show results where [Name] = "Fred" is true in the DAX expression.
 
 ![With Row Level Security](https://raw.githubusercontent.com/BaakWu/PowerBiRazorApp/master/ReadmeImages/WithRowLevelSecurity.png)
